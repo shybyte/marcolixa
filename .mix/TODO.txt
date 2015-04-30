@@ -1,0 +1,10 @@
+Doing:
+
+TODO:
+
+
+Done:
+    * Initial Projectsetup [0:45]
+
+Learned:
+    * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"
