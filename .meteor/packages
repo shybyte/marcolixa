@@ -10,3 +10,6 @@ insecure
 meteortypescript:compiler
 meteortypescript:typescript-libs
 iron:router
+joshowens:accounts-entry
+accounts-password
+mrt:bootstrap-3

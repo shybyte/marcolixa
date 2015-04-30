@@ -1,9 +1,16 @@
 Doing:
 
 TODO:
-
+    * Create New Document
+    * Show Grid of Documents
+    * Open in Marcolix
+    * Add Logout
+    * Design
+    * Google Login
+    * Facebook Login
 
 Done:
+    * Add Login [1:00]
     * Initial Projectsetup [0:45]
 
 Learned:
