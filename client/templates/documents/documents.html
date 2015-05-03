@@ -1,4 +1,14 @@
 <template name="documents">
-    Your Documents
-    <a href="/sign-out">{{userEmail}} Sign Out</a>
+    <h2>Your Documents</h2>
+    <button class="btn btn-success createDocumentButton">New Document</button>
+
+    <div class="documents">
+        {{#each this}}
+            <a class="document" href="{{pathFor 'editDocument' this._id}}">
+                <h3>{{title}}</h3>
+                {{text}}
+            </a>
+        {{/each}}
+    </div>
+
 </template>

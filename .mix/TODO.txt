@@ -1,10 +1,8 @@
 Doing:
 
 TODO:
-    * Create New Document
     * Show Grid of Documents
     * Open in Marcolix
-    * Add Logout
     * Design
     * Google Login
     * Facebook Login
@@ -13,6 +11,8 @@ Done:
     * Add Login [1:00]
     * Initial Projectsetup [0:45]
     * Nicer Startpage [0:15]
+    * Create New Document [0:50]
+    * Add styled Logout (left navigation sidebar) [0:10]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

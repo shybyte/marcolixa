@@ -1,0 +1,14 @@
+<template name="loggedInLayout">
+
+    <div class="page">
+        <div class="navigation">
+            <div class="username">{{userEmail}}</div>
+            <a href="/sign-out">Sign Out</a>
+
+        </div>
+        <div class="mainPanel">{{> yield}}</div>
+    </div>
+
+
+
+</template>
