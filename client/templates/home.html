@@ -1,9 +1,22 @@
 <template name="home">
-    Welcome to Marcolix!.
-    {{#if currentUser}}
-        <a href="/sign-out">{{userEmail}} Sign Out</a>
-    {{else}}
-        <a href="/sign-in">Sign In</a> or
-        <a href="/sign-up">Sign Up</a>
-    {{/if}}
+    <div class="home container">
+        <div class="jumbotron">
+            <h1>Marcolix</h1>
+
+            <p>Marcolix makes you a better writer by finding and correcting
+                up to 10000× more mistakes than your toaster.</p>
+
+            {{#if currentUser}}
+                <p>
+                    Go to your <a href="{{pathFor 'documents'}}">documents</a> or <a href="/sign-out">sign out</a>.
+                </p>
+            {{else}}
+                <p>
+                    <a class="btn btn-primary btn-lg" href="sign-in" role="button">Sign In</a>
+                    or
+                    <a class="btn btn-success btn-lg" href="sign-up" role="button">Sign Up</a>
+                </p>
+            {{/if}}
+        </div>
+    </div>
 </template>
