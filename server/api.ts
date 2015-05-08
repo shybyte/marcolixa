@@ -48,8 +48,10 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
     action: function () {
       return doWithDocument(this, doc => {
         Documents.update(doc._id, {
-          title: this.bodyParams.title,
-          html: this.bodyParams.html,
+          $set: {
+            title: this.bodyParams.title,
+            html: this.bodyParams.html,
+          }
         });
         return {status: 'success'};
       });

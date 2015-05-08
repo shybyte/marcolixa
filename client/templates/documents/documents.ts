@@ -1,4 +1,5 @@
 /// <reference path="../../../.typescript/package_defs/all-definitions.d.ts" />
+/// <reference path="../../../lib/collections.ts" />
 
 var documentsTemplate = Template['documents'];
 
@@ -7,11 +8,12 @@ documentsTemplate.helpers({
 
 documentsTemplate.events({
   'click .createDocumentButton': () => {
-    Documents.insert({
+    var newDocument:HtmlDocument = {
       title: 'New Document',
-      text: 'This is some dummy text.',
+      html: 'This is some dummy text.',
       owner: Meteor.userId()
-    });
+    };
+    Documents.insert(newDocument);
   }
 
 });

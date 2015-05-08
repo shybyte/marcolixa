@@ -1,7 +1,7 @@
 Doing:
 
+
 TODO:
-    * Remove insecure and autopublish
     * Open in Marcolix
     * Show Grid of Documents
     * Design
@@ -19,6 +19,7 @@ Done:
         * get document by id (secured by token)
         * save document
         * validate authToken
+    * Remove insecure and autopublish [0:15]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

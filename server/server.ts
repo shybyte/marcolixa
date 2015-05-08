@@ -3,3 +3,7 @@
 Meteor.startup(function () {
   console.log('Started!!!');
 });
+
+Meteor.publish('documents', function () {
+  return Documents.find({owner: this.userId})
+});

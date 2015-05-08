@@ -1,6 +1,8 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  waitOn: () => [Meteor.subscribe('documents')]
 });
+
 
 Router.route('/', {name: 'home'});
 
