@@ -4,6 +4,7 @@
 Restivus.configure({
   useAuth: true,
   prettyJson: true,
+  enableCors: true,
   auth: {
     token: 'services.resume.loginTokens.hashedToken',
     user: function () {
@@ -30,10 +31,21 @@ var DOCUMENT_NOT_FOUND = {
   }
 };
 
+var DOCUMENT_FORBIDDEN = {
+  statusCode: 403,
+  body: {
+    status: 'documentIsNotYours'
+  }
+};
+
 function doWithDocument(restivusThis, handler:(document:HtmlDocument) => any):any {
-  var document = Documents.findOne({owner: restivusThis.userId, _id: restivusThis.urlParams.id});
+  var document = Documents.findOne(restivusThis.urlParams.id);
   if (document) {
-    return handler(document);
+    if (document.owner === restivusThis.userId) {
+      return handler(document);
+    } else {
+      return DOCUMENT_FORBIDDEN
+    }
   } else {
     return DOCUMENT_NOT_FOUND;
   }
@@ -56,6 +68,19 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
         return {status: 'success'};
       });
     }
+  },
+  options: {
+    authRequired: false,
+    action: function () {
+      return {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'x-auth-token, x-user-id, X-Requested-With'
+        },
+        statusCode: 200,
+        body: {}
+      }
+    }
   }
 });
 
@@ -64,3 +89,4 @@ Restivus.addRoute('token/validate', {authRequired: true}, {
     status: 'success'
   }),
 });
+
