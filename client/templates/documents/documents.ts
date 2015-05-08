@@ -9,7 +9,8 @@ documentsTemplate.events({
   'click .createDocumentButton': () => {
     Documents.insert({
       title: 'New Document',
-      text: 'This is some dummy text.'
+      text: 'This is some dummy text.',
+      owner: Meteor.userId()
     });
   }
 

@@ -1,8 +1,9 @@
 Doing:
 
 TODO:
-    * Show Grid of Documents
+    * Remove insecure and autopublish
     * Open in Marcolix
+    * Show Grid of Documents
     * Design
     * Google Login
     * Facebook Login
@@ -13,6 +14,11 @@ Done:
     * Nicer Startpage [0:15]
     * Create New Document [0:50]
     * Add styled Logout (left navigation sidebar) [0:10]
+    * Build Restful API (Load/Save Document, validate authToken) [2:10]
+        * get documents of user
+        * get document by id (secured by token)
+        * save document
+        * validate authToken
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

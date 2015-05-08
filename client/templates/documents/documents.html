@@ -6,7 +6,7 @@
         {{#each this}}
             <a class="document" href="{{pathFor 'editDocument' this._id}}">
                 <h3>{{title}}</h3>
-                {{text}}
+                {{html}}
             </a>
         {{/each}}
     </div>
