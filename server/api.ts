@@ -75,7 +75,8 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
       return {
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'x-auth-token, x-user-id, X-Requested-With'
+          'Access-Control-Allow-Headers': 'x-auth-token, x-user-id, X-Requested-With',
+          'Access-Control-Allow-Methods': 'PUT, GET, OPTIONS'
         },
         statusCode: 200,
         body: {}
