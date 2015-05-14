@@ -1,8 +1,6 @@
 Doing:
 
-
 TODO:
-    * Open in Marcolix
     * Show Grid of Documents
     * Design
     * Google Login
@@ -20,6 +18,7 @@ Done:
         * save document
         * validate authToken
     * Remove insecure and autopublish [0:15]
+    * Open in Marcolix-Editor [1:15]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"
