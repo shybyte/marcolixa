@@ -1,14 +1,14 @@
 <template name="documents">
-    <h2>Your Documents</h2>
-    <button class="btn btn-success createDocumentButton">New Document</button>
-
     <div class="documents">
-        {{#each this}}
-            <a class="document" href="{{pathFor 'editDocument' this._id}}">
-                <h3>{{title}}</h3>
-                {{html}}
-            </a>
-        {{/each}}
+        <button class="btn btn-success createDocumentButton">New Document</button>
+
+        <div class="documentsList">
+            {{#each this}}
+                {{> documentCard}}
+            {{/each}}
+        </div>
     </div>
 
 </template>
+
+

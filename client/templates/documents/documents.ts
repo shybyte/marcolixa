@@ -3,17 +3,18 @@
 
 var documentsTemplate = Template['documents'];
 
-documentsTemplate.helpers({
-});
+documentsTemplate.helpers({});
 
 documentsTemplate.events({
   'click .createDocumentButton': () => {
     var newDocument:HtmlDocument = {
-      title: 'New Document',
-      html: 'This is some dummy text.',
+      title: '',
+      html: '',
+      text: '',
       owner: Meteor.userId()
     };
-    Documents.insert(newDocument);
+    var newDocumentId = Documents.insert(newDocument);
+    Router.go('editDocument', { _id: newDocumentId});
   }
 
 });

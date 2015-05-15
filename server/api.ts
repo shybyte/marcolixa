@@ -1,5 +1,6 @@
 /// <reference path="../.typescript/package_defs/all-definitions.d.ts" />
 /// <reference path="../.typescript/restivus.d.ts" />
+/// <reference path="../.typescript/sanitize-html.d.ts" />
 
 Restivus.configure({
   useAuth: true,
@@ -63,6 +64,7 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
           $set: {
             title: this.bodyParams.title,
             html: this.bodyParams.html,
+            text: sanitizeHtml(this.bodyParams.html, {allowedTags: []}).replace(/\s+/g, ' ').trim()
           }
         });
         return {status: 'success'};

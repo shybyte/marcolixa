@@ -5,5 +5,5 @@ Meteor.startup(function () {
 });
 
 Meteor.publish('documents', function () {
-  return Documents.find({owner: this.userId})
+  return Documents.find({owner: this.userId});
 });

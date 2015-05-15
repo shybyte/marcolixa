@@ -2,6 +2,7 @@ interface HtmlDocument {
   _id?: string;
   title: string;
   html: string;
+  text: string;
   owner: string; // userId
 }
 
