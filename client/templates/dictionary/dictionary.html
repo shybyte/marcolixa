@@ -1,0 +1,27 @@
+<template name="dictionary">
+    <div class="dictionary">
+        <form class="formRow addDictionaryEntryForm">
+            <input class="form-control newDictionaryEntryText" placeholder="Type new word..."
+                   value="{{newDictionaryEntryText}}"/>
+            <button class="btn btn-success addDictionaryEntryButton" {{addButtonDisabledAttribute}}>Add</button>
+        </form>
+
+        <div class="dictionaryEntries">
+            {{#each this}}
+                {{> dictionaryEntry}}
+            {{else}}
+                <p class="noResultsMessage">
+                    Your dictionary looks pretty empty.
+                </p>
+            {{/each}}
+        </div>
+    </div>
+
+</template>
+
+
+<template name="dictionaryEntry">
+    <div class="dictionaryEntry">
+        <span class="glyphicon glyphicon-trash"></span> {{text}}
+    </div>
+</template>

@@ -93,3 +93,22 @@ Restivus.addRoute('token/validate', {authRequired: true}, {
   }),
 });
 
+Restivus.addRoute('dictionary', {authRequired: true}, {
+  get: function () {
+    var dictionaryEntries = Dictionary.find({owner: this.userId}).fetch();
+    return {dictionary: dictionaryEntries};
+  },
+  post: {
+    action: function () {
+      var newDictionaryEntry:DictionaryEntry = {
+        text: this.bodyParams.text,
+        owner: this.userId
+      };
+      ;
+      return {
+        status: 'success',
+        id: Dictionary.insert(newDictionaryEntry)
+      };
+    }
+  },
+});

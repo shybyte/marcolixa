@@ -1,6 +1,6 @@
 Router.configure({
   layoutTemplate: 'layout',
-  waitOn: () => [Meteor.subscribe('documents')]
+  waitOn: () => [Meteor.subscribe('documents'), Meteor.subscribe('dictionary')]
 });
 
 
@@ -17,4 +17,10 @@ Router.route('/documents/:_id', {
   data: function () {
     return Documents.findOne(this.params._id);
   }
+});
+
+Router.route('/dictionary', {
+  layoutTemplate: 'loggedInLayout',
+  name: 'dictionary',
+  data: () => _.sortBy(Dictionary.find().fetch(), (entry: DictionaryEntry) => entry.text.toLowerCase())
 });
