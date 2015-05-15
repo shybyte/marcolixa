@@ -8,8 +8,7 @@ Router.route('/', {name: 'home'});
 
 Router.route('/documents', {
   layoutTemplate: 'loggedInLayout',
-  name: 'documents',
-  data: () => Documents.find()
+  name: 'documents'
 });
 
 Router.route('/documents/:_id', {

@@ -1,11 +1,14 @@
 Doing:
 
 
-
-
 TODO:
-    * Full Text Search in on Grid of Documets Page
     * Design
+        * Display icon only on hover
+        * Tooltips
+        * Care for long user email-addresses
+        * Avoid flickering when open document
+        * Show "No title" if there is no title
+    * Display number of issues
     * Google Login
     * Facebook Login
 
@@ -23,6 +26,7 @@ Done:
     * Remove insecure and autopublish [0:15]
     * Open in Marcolix-Editor [1:15]
     * Show Grid of Documents Cards [1:45]
+    * Full Text Search in Grid of Documents [1:15]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

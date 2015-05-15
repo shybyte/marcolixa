@@ -1,12 +1,33 @@
 <template name="documents">
     <div class="documents">
-        <button class="btn btn-success createDocumentButton">New Document</button>
+        <div class="formRow">
+            <button class="btn btn-success createDocumentButton">New Document</button>
+
+            <div class="searchFieldContainer">
+                <input type="search" class="form-control searchField" placeholder="Search..." value="{{searchQuery}}"/>
+                {{#if searchQuery}}
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                {{else}}
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                {{/if}}
+            </div>
+
+        </div>
 
         <div class="documentsList">
-            {{#each this}}
+            {{#each filteredDocuments}}
                 {{> documentCard}}
+            {{else}}
+                {{#if searchQuery}}
+                    <p class="noResultsMessage">
+                        Sorry, none of your documents contain "{{searchQuery}}"
+                    </p>
+                {{/if}}
             {{/each}}
+
         </div>
+
+
     </div>
 
 </template>
