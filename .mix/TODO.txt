@@ -1,7 +1,7 @@
 Doing:
 
 TODO:
-    * Display number of issues
+    * Sort cards by last modification date
     * Design
         * Display icon only on hover
         * Tooltips
@@ -30,6 +30,7 @@ Done:
     * Dictionary
         * Dictionary Page [1:20]
         * API [0:15]
+    * Display number of issues [1:00]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

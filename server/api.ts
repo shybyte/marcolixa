@@ -1,6 +1,7 @@
 /// <reference path="../.typescript/package_defs/all-definitions.d.ts" />
 /// <reference path="../.typescript/restivus.d.ts" />
 /// <reference path="../.typescript/sanitize-html.d.ts" />
+/// <reference path="../.typescript/lodash.d.ts" />
 
 Restivus.configure({
   useAuth: true,
@@ -52,21 +53,25 @@ function doWithDocument(restivusThis, handler:(document:HtmlDocument) => any):an
   }
 }
 
+function htmlToText(html:string) {
+  return sanitizeHtml(html, {allowedTags: []}).replace(/\s+/g, ' ');
+}
 
 Restivus.addRoute('documents/:id', {authRequired: true}, {
   get: function ():any {
     return doWithDocument(this, doc => doc);
   },
-  put: {
+  patch: {
     action: function () {
       return doWithDocument(this, doc => {
-        Documents.update(doc._id, {
-          $set: {
-            title: this.bodyParams.title,
-            html: this.bodyParams.html,
-            text: sanitizeHtml(this.bodyParams.html, {allowedTags: []}).replace(/\s+/g, ' ').trim()
-          }
-        });
+        var body = this.bodyParams;
+        var setCommandArgument = lodash.omit({
+          title: body.title,
+          html: body.html,
+          text: body.html ? htmlToText(body.html) : undefined,
+          issueCount: body.issueCount
+        }, (value) => (value === undefined || value === null));
+        Documents.update(doc._id, {$set: setCommandArgument});
         return {status: 'success'};
       });
     }
@@ -78,7 +83,7 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'x-auth-token, x-user-id, X-Requested-With',
-          'Access-Control-Allow-Methods': 'PUT, GET, OPTIONS'
+          'Access-Control-Allow-Methods': 'PUT, GET, OPTIONS, PATCH'
         },
         statusCode: 200,
         body: {}

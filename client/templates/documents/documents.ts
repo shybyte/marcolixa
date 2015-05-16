@@ -34,7 +34,8 @@ documentsTemplate.events({
       title: '',
       html: '',
       text: '',
-      owner: Meteor.userId()
+      owner: Meteor.userId(),
+      issueCount: 0
     };
     var newDocumentId = Documents.insert(newDocument);
     Router.go('editDocument', {_id: newDocumentId});

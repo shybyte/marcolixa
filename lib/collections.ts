@@ -4,6 +4,7 @@ interface HtmlDocument {
   html: string;
   text: string;
   owner: string; // userId
+  issueCount: number
 }
 
 interface DictionaryEntry {

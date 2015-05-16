@@ -34,16 +34,25 @@
 
 }
 
+.documentCard,
 .documentCard:hover {
   text-decoration: none;
-
 }
 
-.documentCardFooter,
-.documentCard:hover .documentCardFooter {
-  color: #33f;
+.documentCard .glyphicon-trash {
+  opacity: 0;
+  transition: all 0.5s;
 }
 
-.documentCardFooter .glyphicon:hover {
-  color: #66f;
+.documentCard:hover .glyphicon-trash {
+  opacity: 1;
+}
+
+.documentCardFooter {
+  color: #333;
+  text-align: right;
+  .issueCount {
+    float: left;
+    color: #e55;
+  }
 }

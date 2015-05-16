@@ -3,7 +3,11 @@
 
 var documentsTemplate = Template['documentCard'];
 
-documentsTemplate.helpers({});
+documentsTemplate.helpers({
+  issueCountText: function () {
+    return this.issueCount + (this.issueCount === 1 ? ' Issue' : ' Issues');
+  }
+});
 
 documentsTemplate.events({
   'click .glyphicon-trash': function (event) {
