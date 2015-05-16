@@ -3,9 +3,9 @@
 // Definitions by: Brian Zengel <https://github.com/bczengel>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-declare var _: _.LoDashStatic;
+declare var lodash: lodash.LoDashStatic;
 
-declare module _ {
+declare module lodash {
     interface LoDashStatic {
         /**
         * Creates a lodash object which wraps the given value to enable intuitive method chaining.
@@ -2055,12 +2055,12 @@ declare module _ {
         /**
         * @see _.zip
         **/
-        zip(...arrays: any[][]): _.LoDashArrayWrapper<any[][]>;
+        zip(...arrays: any[][]): lodash.LoDashArrayWrapper<any[][]>;
 
         /**
         * @see _.zip
         **/
-        unzip(...arrays: any[]): _.LoDashArrayWrapper<any[][]>;
+        unzip(...arrays: any[]): lodash.LoDashArrayWrapper<any[][]>;
     }
 
     //_.zipObject
@@ -3322,19 +3322,19 @@ declare module _ {
         **/
         groupBy(
             callback: ListIterator<T, any>,
-            thisArg?: any): _.LoDashObjectWrapper<_.Dictionary<T[]>>;
+            thisArg?: any): lodash.LoDashObjectWrapper<lodash.Dictionary<T[]>>;
 
         /**
         * @see _.groupBy
         **/
         groupBy(
-            pluckValue: string): _.LoDashObjectWrapper<_.Dictionary<T[]>>;
+            pluckValue: string): lodash.LoDashObjectWrapper<lodash.Dictionary<T[]>>;
 
         /**
         * @see _.groupBy
         **/
         groupBy<W>(
-            whereValue: W): _.LoDashObjectWrapper<_.Dictionary<T[]>>;
+            whereValue: W): lodash.LoDashObjectWrapper<lodash.Dictionary<T[]>>;
     }
 
     interface LoDashObjectWrapper<T> {
@@ -3343,19 +3343,19 @@ declare module _ {
         **/
         groupBy<TValue>(
             callback: ListIterator<TValue, any>,
-            thisArg?: any): _.LoDashObjectWrapper<_.Dictionary<TValue[]>>;
+            thisArg?: any): lodash.LoDashObjectWrapper<lodash.Dictionary<TValue[]>>;
 
         /**
         * @see _.groupBy
         **/
         groupBy<TValue>(
-            pluckValue: string): _.LoDashObjectWrapper<_.Dictionary<TValue[]>>;
+            pluckValue: string): lodash.LoDashObjectWrapper<lodash.Dictionary<TValue[]>>;
 
         /**
         * @see _.groupBy
         **/
         groupBy<W, TValue>(
-            whereValue: W): _.LoDashObjectWrapper<_.Dictionary<TValue[]>>;
+            whereValue: W): lodash.LoDashObjectWrapper<lodash.Dictionary<TValue[]>>;
     }
 
     //_.indexBy
@@ -5556,7 +5556,7 @@ declare module _ {
         **/
         forIn<T extends {}>(
             callback: ObjectIterator<T, void>,
-            thisArg?: any): _.LoDashObjectWrapper<T>;
+            thisArg?: any): lodash.LoDashObjectWrapper<T>;
     }
 
     //_.forInRight
@@ -5589,7 +5589,7 @@ declare module _ {
         **/
         forInRight<T extends {}>(
             callback: ObjectIterator<T, void>,
-            thisArg?: any): _.LoDashObjectWrapper<T>;
+            thisArg?: any): lodash.LoDashObjectWrapper<T>;
     }
 
     //_.forOwn
@@ -5623,7 +5623,7 @@ declare module _ {
         **/
         forOwn<T extends {}>(
             callback: ObjectIterator<T, void>,
-            thisArg?: any): _.LoDashObjectWrapper<T>;
+            thisArg?: any): lodash.LoDashObjectWrapper<T>;
     }
 
     //_.forOwnRight
@@ -5655,7 +5655,7 @@ declare module _ {
         **/
         forOwnRight<T extends {}>(
             callback: ObjectIterator<T, void>,
-            thisArg?: any): _.LoDashObjectWrapper<T>;
+            thisArg?: any): lodash.LoDashObjectWrapper<T>;
     }
 
     //_.functions
@@ -5678,12 +5678,12 @@ declare module _ {
         /**
         * @see _.functions
         **/
-        functions(): _.LoDashArrayWrapper<string>;
+        functions(): lodash.LoDashArrayWrapper<string>;
 
         /**
         * @see _.functions
         **/
-        methods(): _.LoDashArrayWrapper<string>;
+        methods(): lodash.LoDashArrayWrapper<string>;
     }
 
     //_.has
