@@ -14,3 +14,4 @@ mrt:bootstrap-3
 less
 nimble:restivus
 djedi:sanitize-html
+stevezhu:lodash
