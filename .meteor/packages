@@ -15,3 +15,4 @@ less
 nimble:restivus
 djedi:sanitize-html
 stevezhu:lodash
+zimme:collection-timestampable

@@ -10,16 +10,19 @@ function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
+var SHOW_RECENTLY_UPDATED_FIRST = {sort: {updatedAt: -1}};
+
+
 documentsTemplate.helpers({
   searchQuery: () => Session.get(SEARCH_QUERY_SESSION_KEY),
 
   filteredDocuments: function () {
     var searchQuery = Session.get(SEARCH_QUERY_SESSION_KEY);
     if (!searchQuery) {
-      return Documents.find();
+      return Documents.find({}, SHOW_RECENTLY_UPDATED_FIRST);
     }
     var searchRegExp = new RegExp(escapeRegExp(searchQuery), 'i');
-    return Documents.find({$or: [{'text': {$regex: searchRegExp}}, {'title': {$regex: searchRegExp}}]});
+    return Documents.find({$or: [{'text': {$regex: searchRegExp}}, {'title': {$regex: searchRegExp}}]}, SHOW_RECENTLY_UPDATED_FIRST);
   }
 });
 
