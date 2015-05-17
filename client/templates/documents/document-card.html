@@ -1,7 +1,14 @@
 <template name="documentCard">
     <a class="documentCard" href="{{pathFor 'editDocument' this._id}}">
         <div class="documentContent">
-            <h3>{{title}}</h3>
+            <h3>
+                {{#if title}}
+                    {{title}}
+                {{else}}
+                    No Title
+                {{/if}}
+            </h3>
+
             <p>{{text}}</p>
         </div>
         <div class="documentCardFooter">

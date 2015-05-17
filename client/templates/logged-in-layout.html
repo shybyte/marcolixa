@@ -2,12 +2,12 @@
 
     <div class="page">
         <div class="navigation">
-            <a href="{{pathFor "documents"}}">My Documents</a>
-            <a href="{{pathFor "dictionary"}}">My Dictionary</a>
+            <a href="{{pathFor "documents"}}" class="{{isActiveRoute regex='documents'}}">My Documents</a>
+            <a href="{{pathFor "dictionary"}}" class="{{isActiveRoute regex='dictionary'}}">My Dictionary</a>
             <br/><br/>
 
-            <div class="username">{{userEmail}}</div>
             <a href="/sign-out">Sign Out</a>
+            <div class="username">{{userEmail}}</div>
 
         </div>
         <div class="mainPanel">{{> yield}}</div>

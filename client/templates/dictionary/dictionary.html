@@ -1,9 +1,9 @@
 <template name="dictionary">
     <div class="dictionary">
         <form class="formRow addDictionaryEntryForm">
-            <input class="form-control newDictionaryEntryText" placeholder="Type new word..."
+            <input class="form-control newDictionaryEntryText" placeholder="Type a new word to add it..."
                    value="{{newDictionaryEntryText}}"/>
-            <button class="btn btn-success addDictionaryEntryButton" {{addButtonDisabledAttribute}}>Add</button>
+            <button class="btn btn-success addDictionaryEntryButton" {{addButtonDisabledAttribute}} title="Add to Dictionary">Add</button>
         </form>
 
         <div class="dictionaryEntries">
@@ -22,6 +22,6 @@
 
 <template name="dictionaryEntry">
     <div class="dictionaryEntry">
-        <span class="glyphicon glyphicon-trash"></span> {{text}}
+        <span class="glyphicon glyphicon-trash" title="Delete Word"></span> {{text}}
     </div>
 </template>

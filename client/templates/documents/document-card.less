@@ -6,6 +6,13 @@
   float: left;
   margin: 1em 1em 1em 0;
   padding: 1em;
+  box-shadow: 1px 1px 5px #ddd;
+  transition: all 0.3s;
+
+  &:hover, &:focus  {
+    box-shadow: 2px 2px 7px #aaa;
+    transform: scale(1.01, 1.01);
+  }
 
   h3 {
     padding: 0;
@@ -41,7 +48,7 @@
 
 .documentCard .glyphicon-trash {
   opacity: 0;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 .documentCard:hover .glyphicon-trash {

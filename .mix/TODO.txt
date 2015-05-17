@@ -1,14 +1,6 @@
 Doing:
 
-
 TODO:
-    * Design
-        * Display icon only on hover
-        * Tooltips
-        * Care for long user email-addresses
-        * Avoid flickering when open document
-        * Show "No title" if there is no title
-        * Shadow behind cards
     * Google Login
     * Facebook Login
 
@@ -32,6 +24,13 @@ Done:
         * API [0:15]
     * Display number of issues [1:00]
     * Sort cards by last modification date [0:45]
+    * Design [1:00]
+        * Tooltips
+        * Mark current page in menu
+        * Show "No Title" if there is no title
+        * Avoid flickering when open document
+        * Shadow behind cards
+        * Care for long user email-addresses
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

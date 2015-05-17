@@ -51,3 +51,7 @@ documentsTemplate.events({
   'paste .searchField': search
 });
 
+
+documentsTemplate.onRendered(function () {
+  this.$('.searchField').focus();
+});

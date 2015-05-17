@@ -16,3 +16,4 @@ nimble:restivus
 djedi:sanitize-html
 stevezhu:lodash
 zimme:collection-timestampable
+zimme:iron-router-active
