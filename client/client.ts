@@ -10,13 +10,24 @@ Meteor.startup(function () {
 
 });
 
-Template.registerHelper('userEmail', function () {
+Template.registerHelper('userDisplayName', function () {
   var user = Meteor.user();
-  if (user && user.emails) {
+  if (!user) {
+    return '';
+  }
+
+  if (user.emails) {
     return user.emails[0].address;
   }
-  if (user && user.services && user.services.google) {
-    return user.services.google.email;
+
+  if (user.services) {
+    if (user.services.google) {
+      return user.services.google.email;
+    }
+    if (user.services.facebook) {
+      return user.services.facebook.name;
+    }
+  } else {
+    return '';
   }
-  return '';
 });
