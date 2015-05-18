@@ -1,7 +1,6 @@
 Doing:
 
 TODO:
-    * Google Login
     * Facebook Login
 
 Done:
@@ -31,6 +30,7 @@ Done:
         * Avoid flickering when open document
         * Shadow behind cards
         * Care for long user email-addresses
+    * Google Login [1:40]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

@@ -22,5 +22,13 @@ Router.route('/documents/:_id', {
 Router.route('/dictionary', {
   layoutTemplate: 'loggedInLayout',
   name: 'dictionary',
-  data: () => _.sortBy(Dictionary.find().fetch(), (entry: DictionaryEntry) => entry.text.toLowerCase())
+  data: () => _.sortBy(Dictionary.find().fetch(), (entry:DictionaryEntry) => entry.text.toLowerCase())
 });
+
+Router.onBeforeAction(function () {
+  return AccountsEntry.signInRequired ? AccountsEntry.signInRequired(this) : this.next();
+}, {except: ['home', 'entrySignIn', 'entrySignUp', 'entryForgotPassword', 'entryResetPassword']});
+
+Router.onBeforeAction(function () {
+  return Meteor.userId() ? Router.go('documents') : this.next();
+}, {only: ['entrySignIn']});

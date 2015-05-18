@@ -1,17 +1,22 @@
 /// <reference path="../.typescript/package_defs/all-definitions.d.ts" />
 
-Session.setDefault('counter', 0);
+Meteor.startup(function () {
+  AccountsEntry.config({
+    homeRoute: '/',                    // mandatory - path to redirect to after sign-out
+    dashboardRoute: '/documents'       // mandatory - path to redirect to after successful sign-in
+  });
 
-Template['home'].helpers({
-});
+  Meteor.subscribe("userData");
 
-Template['home'].events({
-  'click button': function () {
-    // increment the counter when button is clicked
-    Session.set('counter', Session.get('counter') + 2);
-  }
 });
 
 Template.registerHelper('userEmail', function () {
-  return (Meteor.user() && Meteor.user().emails) ? Meteor.user().emails[0].address : '';
+  var user = Meteor.user();
+  if (user && user.emails) {
+    return user.emails[0].address;
+  }
+  if (user && user.services && user.services.google) {
+    return user.services.google.email;
+  }
+  return '';
 });
