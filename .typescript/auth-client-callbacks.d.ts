@@ -1,5 +1,3 @@
-declare module Mongo {
-  interface  Collection<T> {
-    attachBehaviour(behaviour: string, opts : {});
-  }
+declare module Accounts {
+  function onLogout(callback: Function): void;
 }

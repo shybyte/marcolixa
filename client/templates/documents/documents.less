@@ -4,6 +4,44 @@
   overflow-y: auto;
   background: #f8f8f8;
   padding-right: 1em;
+
+  .createDocumentCard {
+    text-align: center;
+
+    a {
+      color: #88f;
+    }
+
+    label {
+      color: #333;
+      cursor: pointer;
+    }
+    .documentContent {
+      padding-top: 0.6em;
+      font-size: 2em;
+      label {
+        display: block;
+      }
+      &:hover {
+        label {
+          color: #338;
+        }
+      }
+    }
+
+    .uploadFooter {
+      margin-top: -13px;
+      &:hover {
+        label {
+          color: #338;
+        }
+      }
+    }
+  }
+
+  .fileUpload {
+    display: none;
+  }
 }
 
 .documents .formRow {
@@ -27,6 +65,7 @@
       position: absolute;
       top: 0.7em;
       right: 0.5em;
+      cursor: pointer;
     }
   }
 

@@ -1,8 +1,6 @@
 <template name="documents">
     <div class="documents">
         <div class="formRow">
-            <button class="btn btn-success createDocumentButton">New Document</button>
-
             <div class="searchFieldContainer">
                 <input type="search" class="form-control searchField" placeholder="Search..." value="{{searchQuery}}"/>
                 {{#if searchQuery}}
@@ -11,10 +9,24 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 {{/if}}
             </div>
-
         </div>
 
         <div class="documentsList">
+
+            {{#unless searchQuery}}
+                <input class="fileUpload" type="file" accept=".txt"/>
+                <a class="documentCard createDocumentCard" href="">
+                    <div class="documentContent" title="Click here to create a new document">
+                        <span class="glyphicon glyphicon-file"></span>
+                        <label>New</label>
+                    </div>
+                    <div class="uploadFooter" title="Click here to upload a document">
+                        <span class="glyphicon glyphicon-upload"></span>
+                        <label>Upload</label>
+                    </div>
+                </a>
+            {{/unless}}
+
             {{#each filteredDocuments}}
                 {{> documentCard}}
             {{else}}

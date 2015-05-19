@@ -1,8 +1,8 @@
 Doing:
 
-
-
 TODO:
+    * Add document download
+    * Undo delete document
 
 Done:
     * Add Login [1:00]
@@ -34,6 +34,7 @@ Done:
     * Google Login [1:40]
     * Facebook Login [0:20]
     * Clear Session on logout [0:10]
+    * Add document upload [1:50]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

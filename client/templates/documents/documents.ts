@@ -1,4 +1,5 @@
 /// <reference path="../../../.typescript/package_defs/all-definitions.d.ts" />
+/// <reference path="../../../.typescript/lodash.d.ts" />
 /// <reference path="../../../lib/collections.ts" />
 
 
@@ -31,17 +32,51 @@ function search(event) {
   Session.set(SEARCH_QUERY_SESSION_KEY, event.target.value);
 }
 
+function readFile(file):JQueryPromise<string> {
+  var reader = new FileReader();
+  var deferred = $.Deferred();
+
+  reader.onload = function (event) {
+    deferred.resolve(event.target['result']);
+  };
+
+  reader.onerror = function () {
+    deferred.reject(this);
+  };
+
+  reader.readAsText(file);
+
+  return deferred.promise();
+}
+
+function createDocument(text = '', title = '') {
+  var newDocument:HtmlDocument = {
+    title: title,
+    html: lodash.escape(text).replace(/\n/g,'<br/>'),
+    text: text,
+    owner: Meteor.userId(),
+    issueCount: 0
+  };
+  var newDocumentId = Documents.insert(newDocument);
+  Router.go('editDocument', {_id: newDocumentId});
+}
+
 documentsTemplate.events({
-  'click .createDocumentButton': () => {
-    var newDocument:HtmlDocument = {
-      title: '',
-      html: '',
-      text: '',
-      owner: Meteor.userId(),
-      issueCount: 0
-    };
-    var newDocumentId = Documents.insert(newDocument);
-    Router.go('editDocument', {_id: newDocumentId});
+  'click .createDocumentCard': (event) => {
+    event.preventDefault();
+    createDocument();
+  },
+  'click .uploadFooter': (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    $('.fileUpload').click();
+  },
+  'change .fileUpload': (event, template) => {
+    var fileUpload = template.find('.fileUpload');
+    var file = fileUpload.files[0];
+    readFile(file).then((fileContent) => {
+      createDocument(fileContent, file.name.replace(/\..*$/, ""));
+    });
   },
   'click .glyphicon-remove': () => {
     Session.set(SEARCH_QUERY_SESSION_KEY, '');
