@@ -21,3 +21,4 @@ accounts-google
 service-configuration
 accounts-ui
 accounts-facebook
+gwendall:auth-client-callbacks

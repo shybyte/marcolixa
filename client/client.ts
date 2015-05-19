@@ -1,4 +1,6 @@
 /// <reference path="../.typescript/package_defs/all-definitions.d.ts" />
+/// <reference path="../.typescript/auth-client-callbacks.d.ts" />
+/// <reference path="../.typescript/session.d.ts" />
 
 Meteor.startup(function () {
   AccountsEntry.config({
@@ -8,6 +10,10 @@ Meteor.startup(function () {
 
   Meteor.subscribe("userData");
 
+});
+
+Accounts.onLogout(function() {
+  Session.keys = {};
 });
 
 Template.registerHelper('userDisplayName', function () {
