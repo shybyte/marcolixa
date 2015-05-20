@@ -2,6 +2,9 @@
 /// <reference path="../.typescript/restivus.d.ts" />
 /// <reference path="../.typescript/sanitize-html.d.ts" />
 /// <reference path="../.typescript/lodash.d.ts" />
+/// <reference path="../.typescript/meteor-npm.d.ts" />
+
+var htmlToText = Meteor.npmRequire('html-to-text');
 
 Restivus.configure({
   useAuth: true,
@@ -53,9 +56,6 @@ function doWithDocument(restivusThis, handler:(document:HtmlDocument) => any):an
   }
 }
 
-function htmlToText(html:string) {
-  return sanitizeHtml(html, {allowedTags: []}).replace(/\s+/g, ' ');
-}
 
 Restivus.addRoute('documents/:id', {authRequired: true}, {
   get: function ():any {
@@ -68,7 +68,7 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
         var setCommandArgument = lodash.omit({
           title: body.title,
           html: body.html,
-          text: body.html ? htmlToText(body.html) : undefined,
+          text: body.html ? htmlToText.fromString(body.html) : undefined,
           issueCount: body.issueCount
         }, (value) => (value === undefined || value === null));
         Documents.update(doc._id, {$set: setCommandArgument});

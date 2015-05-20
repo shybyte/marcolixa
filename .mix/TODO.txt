@@ -1,8 +1,9 @@
 Doing:
 
 TODO:
-    * Add document download
     * Undo delete document
+    * Prevent adding the same dictionary entry twice
+    * Improve Design
 
 Done:
     * Add Login [1:00]
@@ -35,6 +36,7 @@ Done:
     * Facebook Login [0:20]
     * Clear Session on logout [0:10]
     * Add document upload [1:50]
+    * Add document download [0:45]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

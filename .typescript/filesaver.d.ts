@@ -1,0 +1,1 @@
+declare function saveAs(blob, filename: string);

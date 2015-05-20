@@ -22,3 +22,8 @@ service-configuration
 accounts-ui
 accounts-facebook
 gwendall:auth-client-callbacks
+pfafman:filesaver
+meteorhacks:npm
+
+
+npm-container
