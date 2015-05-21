@@ -13,8 +13,19 @@ function escapeRegExp(str) {
 
 var SHOW_RECENTLY_UPDATED_FIRST = {sort: {updatedAt: -1}};
 
+var getDeletedDocument = () => Session.get('deletedDocument');
+
+function isUndoMessageVisible() {
+  var deletedDocument = getDeletedDocument();
+  return deletedDocument && deletedDocument.showUndo;
+}
+
 
 documentsTemplate.helpers({
+  deletedDocument: () => {
+    return Session.get('deletedDocument');
+  },
+  undoDeleteDocumentMessageClass: () =>  isUndoMessageVisible() ? '' : 'hiddenMessage',
   searchQuery: () => Session.get(SEARCH_QUERY_SESSION_KEY),
 
   filteredDocuments: function () {
@@ -55,7 +66,8 @@ function createDocument(text = '', title = '') {
     html: lodash.escape(text).replace(/\n/g,'<br/>'),
     text: text,
     owner: Meteor.userId(),
-    issueCount: 0
+    issueCount: 0,
+    updatedAt: new Date()
   };
   var newDocumentId = Documents.insert(newDocument);
   Router.go('editDocument', {_id: newDocumentId});
@@ -83,7 +95,14 @@ documentsTemplate.events({
   },
   'keyup .searchField': search,
   'cut .searchField': search,
-  'paste .searchField': search
+  'paste .searchField': search,
+  'click .undoButton': (event) => {
+    event.preventDefault();
+    var deletedDocument = getDeletedDocument();
+    deletedDocument.showUndo = false;
+    Session.set('deletedDocument', deletedDocument);
+    Documents.update(deletedDocument._id,{$set: {deleted: false}});
+  },
 });
 
 

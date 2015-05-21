@@ -9,7 +9,8 @@ interface HtmlDocument {
   owner: string; // userId
   issueCount: number;
   createdAt?: string;  // automatically set by collection-timestampable
-  updatedAt?: string; // automatically set collection-timestampable
+  updatedAt: Date;
+  deleted?: boolean;
 }
 
 interface DictionaryEntry {
@@ -28,14 +29,14 @@ var ownsDocument = (userId, doc) => doc && doc.owner == userId;
 
 Documents.attachBehaviour('timestampable', {
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
+  updatedAt: false,
   createdBy: false,
   updatedBy: false
 });
 
 Documents.allow({
   insert: ownsDocument,
-  remove: ownsDocument
+  update: ownsDocument
 });
 
 Dictionary.allow({

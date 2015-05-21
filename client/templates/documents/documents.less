@@ -71,3 +71,21 @@
 
 }
 
+.documents .undoDeleteDocumentMessage {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+  background: #ffa;
+  padding: 0.8em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  transition: all 1s;
+  opacity: 1;
+  box-shadow: 2px 2px 7px #aaa;
+  &.hiddenMessage {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+}

@@ -1,5 +1,10 @@
 <template name="documents">
     <div class="documents">
+        <div class="undoDeleteDocumentMessage {{undoDeleteDocumentMessageClass}}">
+            "{{deletedDocument.title}}" was deleted.
+            <a href="#" class="undoButton">Undo</a>
+        </div>
+
         <div class="formRow">
             <div class="searchFieldContainer">
                 <input type="search" class="form-control searchField" placeholder="Search..." value="{{searchQuery}}"/>

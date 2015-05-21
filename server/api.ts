@@ -69,7 +69,8 @@ Restivus.addRoute('documents/:id', {authRequired: true}, {
           title: body.title,
           html: body.html,
           text: body.html ? htmlToText.fromString(body.html) : undefined,
-          issueCount: body.issueCount
+          issueCount: body.issueCount,
+          updatedAt: new Date()
         }, (value) => (value === undefined || value === null));
         Documents.update(doc._id, {$set: setCommandArgument});
         return {status: 'success'};
