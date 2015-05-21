@@ -1,8 +1,8 @@
 Doing:
 
+
 TODO:
     * Undo delete document
-    * Prevent adding the same dictionary entry twice
     * Improve Design
 
 Done:
@@ -37,6 +37,7 @@ Done:
     * Clear Session on logout [0:10]
     * Add document upload [1:50]
     * Add document download [0:45]
+    * Prevent adding the same dictionary entry twice [0:30]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"

@@ -105,11 +105,18 @@ Restivus.addRoute('dictionary', {authRequired: true}, {
   },
   post: {
     action: function () {
+      var text = this.bodyParams.text;
+      var potentialDuplicate = Dictionary.findOne({text: text});
+      if (potentialDuplicate) {
+        return {
+          status: 'duplicate',
+          id: potentialDuplicate._id
+        };
+      }
       var newDictionaryEntry:DictionaryEntry = {
-        text: this.bodyParams.text,
+        text: text,
         owner: this.userId
       };
-      ;
       return {
         status: 'success',
         id: Dictionary.insert(newDictionaryEntry)

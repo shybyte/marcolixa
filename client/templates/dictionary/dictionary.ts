@@ -5,9 +5,13 @@ var NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY = 'newDictionaryEntryText';
 
 var dictionaryTemplate = Template['dictionary'];
 
+var newDictionaryEntryText = () => (Session.get(NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY) || '').trim();
+var isDuplicate = () => Dictionary.find({text: newDictionaryEntryText()}).count() > 0;
+
 dictionaryTemplate.helpers({
-  newDictionaryEntryText: () => (Session.get(NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY) || ''),
-  addButtonDisabledAttribute: () => (Session.get(NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY) || '').trim() ? '' : 'disabled'
+  newDictionaryEntryText: newDictionaryEntryText,
+  isDuplicate: isDuplicate,
+  addButtonDisabledAttribute: () => (newDictionaryEntryText() && !isDuplicate()) ? '' : 'disabled'
 });
 
 function saveTextToSession(event) {
@@ -17,8 +21,8 @@ function saveTextToSession(event) {
 dictionaryTemplate.events({
   'submit .addDictionaryEntryForm': (event, template) => {
     event.preventDefault();
-    var text = Session.get(NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY);
-    if (!text.trim()) {
+    var text = newDictionaryEntryText();
+    if (!text) {
       return;
     }
     var newDictionaryEntry:DictionaryEntry = {
@@ -26,7 +30,7 @@ dictionaryTemplate.events({
       owner: Meteor.userId()
     };
     Dictionary.insert(newDictionaryEntry);
-    Session.set(NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY, '')
+    Session.set(NEW_DICTIONARY_ENTRY_TEXT_SESSION_KEY, '');
   },
   'keyup .newDictionaryEntryText': saveTextToSession,
   'cut .newDictionaryEntryText': saveTextToSession,

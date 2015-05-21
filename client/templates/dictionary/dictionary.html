@@ -3,8 +3,13 @@
         <form class="formRow addDictionaryEntryForm">
             <input class="form-control newDictionaryEntryText" placeholder="Type a new word to add it..."
                    value="{{newDictionaryEntryText}}"/>
-            <button class="btn btn-success addDictionaryEntryButton" {{addButtonDisabledAttribute}} title="Add to Dictionary">Add</button>
+            <button class="btn btn-success addDictionaryEntryButton" {{addButtonDisabledAttribute}}
+                    title="Add to Dictionary">Add
+            </button>
         </form>
+        {{#if isDuplicate}}
+            <div class="duplicateMessage">This word is already in your dictionary.</div>
+        {{/if}}
 
         <div class="dictionaryEntries">
             {{#each this}}
