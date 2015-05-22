@@ -12,7 +12,6 @@ joshowens:accounts-entry
 accounts-password
 mrt:bootstrap-3
 less
-nimble:restivus
 djedi:sanitize-html
 stevezhu:lodash
 zimme:collection-timestampable
@@ -24,6 +23,6 @@ accounts-facebook
 gwendall:auth-client-callbacks
 pfafman:filesaver
 meteorhacks:npm
-
-
 npm-container
+nimble:restivus
+email

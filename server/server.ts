@@ -2,9 +2,12 @@
 /// <reference path="../.typescript/service-configuration.d.ts" />
 
 Meteor.startup(function () {
-  console.log('Started!');
+  Accounts.emailTemplates.siteName = "Marcolix";
+  Accounts.emailTemplates.from = "Marcolix <info@marcolix.com>";
+  Accounts.config({
+    sendVerificationEmail: true
+  });
 });
-
 
 Meteor.publish('documents', function () {
   return Documents.find({owner: this.userId, deleted: {$ne: true}});
