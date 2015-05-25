@@ -14,13 +14,26 @@ editTemplate.onRendered(function () {
     var messageData = event.data;
     if (messageData === 'marcolixEditorIsLoaded') {
       iFrameWindow.postMessage({
-        documentUrl: documentUrl,
-        credentials: {
-          userId: Meteor.userId(),
-          authToken: localStorage.getItem('Meteor.loginToken')
-        }
+        command: 'loadDocument',
+        documentServiceConfig: {
+          documentUrl: documentUrl,
+          credentials: {
+            userId: Meteor.userId(),
+            authToken: localStorage.getItem('Meteor.loginToken')
+          }
+        },
+        dictionaryChangedNotificationEnabled: true
       }, '*');
     }
+  });
+
+  function notifyEditorAboutChangedDictionary() {
+    iFrameWindow.postMessage({command: 'dictionaryChanged'}, '*');
+  }
+
+  this.dictionaryObserver = Dictionary.find().observe({
+    added: notifyEditorAboutChangedDictionary,
+    removed: notifyEditorAboutChangedDictionary
   });
 
   var editorUrl = l.protocol + '//' + l.hostname + ':3333';
@@ -28,3 +41,9 @@ editTemplate.onRendered(function () {
 
 });
 
+
+editTemplate.onDestroyed(function () {
+  if (this.dictionaryObserver) {
+    this.dictionaryObserver.stop();
+  }
+});
