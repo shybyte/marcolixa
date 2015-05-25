@@ -1,4 +1,5 @@
 /// <reference path="../../../.typescript/package_defs/all-definitions.d.ts" />
+/// <reference path="../../../.typescript/lodash.d.ts" />
 /// <reference path="../../../lib/collections.ts" />
 /// <reference path="../../../.typescript/filesaver.d.ts" />
 
@@ -13,17 +14,18 @@ documentsTemplate.helpers({
 documentsTemplate.events({
   'click .glyphicon-trash': function (event) {
     event.preventDefault();
-    var deletedDocument = Documents.findOne(this._id);
+    var deletedDocument = lodash.clone(Documents.findOne(this._id));
     deletedDocument['showUndo'] = true;
+    deletedDocument['undoId'] = lodash.uniqueId();
     Session.set('deletedDocument', deletedDocument);
     setTimeout(() => {
       var currentDeletedDocument = Session.get('deletedDocument');
-      if (deletedDocument._id != currentDeletedDocument._id) {
+      if (deletedDocument['undoId'] != currentDeletedDocument['undoId']) {
         return;
       }
       currentDeletedDocument['showUndo'] = false;
       Session.set('deletedDocument', currentDeletedDocument)
-    }, 7000);
+    }, 10000);
     Documents.update(this._id,{$set: {deleted: true}});
   },
   'click .glyphicon-download': function (event) {
