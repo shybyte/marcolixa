@@ -39,6 +39,7 @@ Done:
     * Configure email [0:10]
     * Improve Design [0:10]
     * Fix repeated undo delete bug [0:10]
+    * Add loading spinner and favicon [0:10]
 
 Learned:
     * Meteor packages are added completely after starting meteor with "meteor" not while "meteor add package"
