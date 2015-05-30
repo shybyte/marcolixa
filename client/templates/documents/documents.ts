@@ -11,7 +11,7 @@ function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
-var SHOW_RECENTLY_UPDATED_FIRST = {sort: {updatedAt: -1}}; //2
+var SHOW_RECENTLY_UPDATED_FIRST = {sort: {updatedAt: -1}}; //3
 
 var getDeletedDocument = () => Session.get('deletedDocument');
 
